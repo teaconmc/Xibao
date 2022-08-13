@@ -17,7 +17,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'maven-publish'
 
 group = 'org.teacon'
-version = '1.0.0'
+version = '1.1.0'
 
 java {
     archivesBaseName = 'xibao'
