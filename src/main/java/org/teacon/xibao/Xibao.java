@@ -51,7 +51,7 @@ public class Xibao {
         }
 
         @SubscribeEvent
-        public static void on(ScreenEvent.Render event) {
+        public static void on(ScreenEvent.BackgroundRendered event) {
             var showXibao = !Files.exists(FMLPaths.GAMEDIR.get().resolve(".xibao_stop"));
             if (showXibao && event.getScreen() instanceof DisconnectedScreen s) {
                 Tesselator tesselator = Tesselator.getInstance();
