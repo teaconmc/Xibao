@@ -7,7 +7,7 @@ import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.DisconnectedScreen;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
@@ -32,10 +32,10 @@ public class Xibao {
     public static final class XibaoImpl {
         private static final ResourceLocation LOCATION = new ResourceLocation("xibao", "textures/xibao.png");
         @SubscribeEvent
-        public static void on(ScreenEvent.InitScreenEvent.Post event) {
+        public static void on(ScreenEvent.Init.Post event) {
             var showXibao = !Files.exists(FMLPaths.GAMEDIR.get().resolve(".xibao_stop"));
             if (showXibao && event.getScreen() instanceof DisconnectedScreen s) {
-                var disableXibao = new Button(s.width / 2 - 75, s.height - 30, 150, 20, new TranslatableComponent("xibao.do_not_show_again"), btn -> {
+                var disableXibaoBuilder = Button.builder(Component.translatable("xibao.do_not_show_again"), btn -> {
                     var gameDir = FMLPaths.GAMEDIR.get();
                     try {
                         Files.writeString(gameDir.resolve(".xibao_stop"), "Remove this file to show Xibao again", StandardCharsets.UTF_8);
@@ -44,12 +44,14 @@ public class Xibao {
                     }
                     btn.active = false;
                 });
-                event.addListener(disableXibao);
+                disableXibaoBuilder.pos(s.width / 2 - 75, s.height - 30);
+                disableXibaoBuilder.size(150, 20);
+                event.addListener(disableXibaoBuilder.build());
             }
         }
 
         @SubscribeEvent
-        public static void on(ScreenEvent.BackgroundDrawnEvent event) {
+        public static void on(ScreenEvent.Render event) {
             var showXibao = !Files.exists(FMLPaths.GAMEDIR.get().resolve(".xibao_stop"));
             if (showXibao && event.getScreen() instanceof DisconnectedScreen s) {
                 Tesselator tesselator = Tesselator.getInstance();
