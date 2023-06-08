@@ -1,20 +1,20 @@
 plugins {
     id 'eclipse'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 group = 'org.teacon'
-version = '2.1.0'
+version = '3.0.0'
 
 java {
-    archivesBaseName = 'Xibao-Forge-1.19'
+    archivesBaseName = 'Xibao-Forge-1.20'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
 minecraft {
-    mappings channel: 'official', version: '1.19.4'
+    mappings channel: 'official', version: '1.20'
 
     runs {
         client {
@@ -45,7 +45,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories { /* no repository here*/ }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.4-45.0.9'
+    minecraft 'net.minecraftforge:forge:1.20-46.0.1'
 }
 
 jar {
@@ -68,11 +68,11 @@ publishing {
     publications {
         release(MavenPublication) {
             groupId = "org.teacon"
-            artifactId = "Xibao-Forge-1.19"
+            artifactId = "Xibao-Forge-1.20"
 
             artifact jar
             pom {
-                name = 'Xibao for Minecraft 1.19'
+                name = 'Xibao for Minecraft 1.20'
                 description = 'Ask IzzelAliz what is this'
                 licenses {
                     license {
