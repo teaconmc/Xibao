@@ -12,6 +12,8 @@ loaderVersion = "[45,)" #mandatory This is typically bumped every Minecraft vers
 license = "Unlicense"
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="http://my.issue.tracker/" #optional
+# https://github.com/MinecraftForge/MinecraftForge/pull/8656
+displayTest="IGNORE_ALL_VERSION"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
@@ -53,6 +55,6 @@ side = "BOTH"
 modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[1.19.4,1.20)"
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "BOTH"

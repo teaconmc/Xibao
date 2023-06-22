@@ -23,11 +23,6 @@ import java.nio.file.Path;
 
 @Mod("xibao")
 public class Xibao {
-    public Xibao() {
-        ModLoadingContext.get()
-                .registerExtensionPoint(IExtensionPoint.DisplayTest.class,
-                        () -> new IExtensionPoint.DisplayTest(() -> "ANY", (a, b) -> b));
-    }
 
     @Mod.EventBusSubscriber(modid = "xibao", value = Dist.CLIENT)
     public static final class XibaoImpl {
