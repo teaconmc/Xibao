@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'org.teacon'
-version = '3.0.2'
+version = '3.0.4'
 
 java {
     archivesBaseName = 'Xibao-Forge-1.20'
