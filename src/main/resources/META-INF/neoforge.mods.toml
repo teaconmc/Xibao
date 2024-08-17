@@ -1,0 +1,22 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "Unlicense"
+
+[[mods]]
+modId = "xibao"
+version = "${mod_version}"
+displayName = "Xibao"
+authors="IzzelAliz"
+description = '''
+Xibao（喜报）: Good News
+'''
+
+[[mixins]]
+config="xibao.mixins.json"
+
+[[dependencies.xibao]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21,1.22)"
+ordering = "NONE"
+side = "BOTH"
