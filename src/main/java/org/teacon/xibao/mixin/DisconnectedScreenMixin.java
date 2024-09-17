@@ -44,10 +44,11 @@ public abstract class DisconnectedScreenMixin extends Screen {
     @Override
     public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         if (Files.exists(Xibao.getXibaoStopFile())) {
-            return;
+            super.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
+        } else {
+            ((GuiGraphicsAccessor)guiGraphics).invokeInnerBlit(
+                    xibao$LOCATION, 0, this.width, 0, this.height, 0, 0, 1, 0, 1
+            );
         }
-        ((GuiGraphicsAccessor)guiGraphics).invokeInnerBlit(
-                xibao$LOCATION, 0, this.width, 0, this.height, 0, 0, 1, 0, 1
-        );
     }
 }
