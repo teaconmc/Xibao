@@ -1,12 +1,12 @@
 package org.teacon.xibao.mixin;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.DisconnectedScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,7 +22,7 @@ import java.nio.file.Files;
 public abstract class DisconnectedScreenMixin extends Screen {
 
     @Unique
-    private static final ResourceLocation xibao$LOCATION = ResourceLocation.fromNamespaceAndPath("xibao", "textures/xibao.png");
+    private static final Identifier xibao$LOCATION = Identifier.fromNamespaceAndPath("xibao", "textures/xibao.png");
 
     @Final
     @Shadow
@@ -42,12 +42,12 @@ public abstract class DisconnectedScreenMixin extends Screen {
     }
 
     @Override
-    public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void extractBackground(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
         if (Files.exists(Xibao.getXibaoStopFile())) {
-            return;
+            // Fallback to original rendering if 喜报 screen is disabled
+            super.extractBackground(guiGraphics, mouseX, mouseY, partialTick);
+        } else {
+            guiGraphics.blit(xibao$LOCATION, 0, 0, this.width, this.height, 0F, 1F, 0F, 1F);
         }
-        ((GuiGraphicsAccessor)guiGraphics).invokeInnerBlit(
-                xibao$LOCATION, 0, this.width, 0, this.height, 0, 0, 1, 0, 1
-        );
     }
 }

@@ -2,10 +2,9 @@
   "required": true,
   "minVersion": "0.8",
   "package": "org.teacon.xibao.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_25",
   "client": [
-    "DisconnectedScreenMixin",
-    "GuiGraphicsAccessor"
+    "DisconnectedScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

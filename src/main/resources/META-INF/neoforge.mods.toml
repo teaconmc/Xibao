@@ -17,6 +17,6 @@ config="xibao.mixins.json"
 [[dependencies.xibao]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21,1.22)"
+versionRange = "[26,)"
 ordering = "NONE"
 side = "BOTH"
