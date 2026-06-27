@@ -150,11 +150,11 @@ publishing {
     publications {
         release(MavenPublication) {
             groupId = "org.teacon"
-            artifactId = "Xibao-NeoForge-1.21"
+            artifactId = "Xibao-NeoForge-26.1"
 
             artifact jar
             pom {
-                name = 'Xibao for Minecraft 1.21'
+                name = 'Xibao for Minecraft 26.1'
                 description = 'Ask IzzelAliz what is this'
                 licenses {
                     license {
